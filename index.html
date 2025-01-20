@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Конвертер валют</title>
+	<link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+	<header class="header">
+
+		<!-- Бургер-меню -->
+		<div class="burger">
+			<span></span>
+		</div>
+		<div class="burger_menu">
+			<!-- Сюда будут перемещаться пункты меню -->
+		</div>
+	</header>
+
+	<main>
+		<!-- <section class="exchange">
+			<div class="exchange_container">
+				<div class="exchange_title">
+					<div class="exchange_title_main">Мгновенный обмен валют в Тайланде</div>
+					<div class="exchange_title_sub">Работаем 24/7</div>
+				</div>
+				<div class="exchange_content">
+					<div class="content_block">
+						<div class="exchange_block">
+							<div class="block_image"><img src="./img/block1.png" alt=""></div>
+							<div class="block_subtext">Более 1 000 отзывов на сторонних ресурсах</div>
+						</div>
+						<div class="exchange_block">
+							<div class="block_image"><img src="./img/block2.png" alt=""></div>
+							<div class="block_subtext">Лицензия ЦБ Королевства Таиланд № МС 225660108
+							</div>
+						</div>
+						<div class="exchange_block">
+							<div class="block_image"><img src="./img/block3.png" alt=""></div>
+							<div class="block_subtext">Получите наличные баты прямо в аэропорту</div>
+						</div>
+						<div class="exchange_block">
+							<div class="block_image"><img src="./img/block4.png" alt=""></div>
+							<div class="block_subtext">Обмен валют онлайн за 2 клика и 60 секунд</div>
+						</div>
+					</div>
+					<div class="exchange_operation">
+						<div class="take">
+							<div class="operation_take_title">
+								<div class="take_title">
+									Вы отдаете:
+								</div>
+								<div class="take_course">
+									<span id="startmoneytake"></span>=<span id="endmoneytake"></span>
+								</div>
+							</div>
+							<div class="take_input">
+								<input type="number" id="amount" placeholder="Сумма">
+								<div class="take_block">
+									<img src="" id="flagtake" alt="">
+									<select id="fromCurrency"></select>
+								</div>
+							</div>
+						</div>
+						<div class="get">
+							<div class="operation_get_title">
+								<div class="get_title">
+									Вы получаете:
+								</div>
+								<div class="get_course">
+									<span id="startmoneyget"></span>=<span id="endmoneyget"></span>
+								</div>
+							</div>
+							<div class="get_answer">
+								<div class="answer_conwert"><span id="convertedAmount"></span></div>
+								<div class="answer_block">
+									<img src="" id="flagget" alt="">
+									<select id="toCurrency"></select>
+								</div>
+							</div>
+					 <button id="convert">Конвертировать</button> 
+		</section> -->
+		<!-- <section class="moneyCourse">
+			<div class="moneyCourse_container">
+				<div class="moneyCourse_content">
+					<div class="moneyCourse_title">Курс валют</div>
+					<div class="moneyCourse_main">
+						<div class="moneyCourse_main_title">
+							<h2>Валюта</h2>
+							<div class="moneyCourse_main_RUB">
+								<div class="moneyCourse_main_RUB_image"><img src="./img/flags/RUB.png" alt=""></div>
+								<div class="moneyCourse_main_RUB_text"><span class="RUB"> Рубль ₽ • RUB</span></div>
+							</div>
+							<div class="moneyCourse_main_USD">
+								<div class="moneyCourse_main_USD_image"><img src="./img/flags/USD.png" alt=""></div>
+								<div class="moneyCourse_main_USD_text"><span class="USD"> Доллар США $ • USD</span></div>
+							</div>
+							<div class="moneyCourse_main_EUR">
+								<div class="moneyCourse_main_EUR_image"><img src="./img/flags/EUR.png" alt=""></div>
+								<div class="moneyCourse_main_EUR_text"><span class="EUR"> Евро € • EUR</span></div>
+							</div>
+							<div class="moneyCourse_main_GBP">
+								<div class="moneyCourse_main_GBP_image"><img src="./img/flags/GBP.png" alt=""></div>
+								<div class="moneyCourse_main_GBP_text"><span class="GBP"> Британский фунт £ • GBP</span></div>
+							</div>
+							<div class="moneyCourse_main_AUD">
+								<div class="moneyCourse_main_AUD_image"><img src="./img/flags/AUD.png" alt=""></div>
+								<div class="moneyCourse_main_AUD_text"><span class="AUD"> Австралийский доллар A$ • AUD</span>
+								</div>
+							</div>
+							<div class="moneyCourse_main_CNY">
+								<div class="moneyCourse_main_CNY_image"><img src="./img/flags/CNY.png" alt=""></div>
+								<div class="moneyCourse_main_CNY_text"><span class="CNY"> Китайский юань ¥ • CNY</span></div>
+							</div>
+
+						</div>
+						<div class="moneyCourse_value_buying">
+							<div class="moneyCourse_buying">
+								<h2>Покупка</h2>
+								<div class="moneyCourse_buying_values">
+									<div class="moneyCourse_buying_RUB">
+										<span>3,224</span>
+									</div>
+									<div class="moneyCourse_buying_USD">
+										<span>34,347</span>
+									</div>
+									<div class="moneyCourse_buying_EUR">
+										<span>34,347</span>
+									</div>
+									<div class="moneyCourse_buying_GBP">
+										<span>34,347</span>
+									</div>
+									<div class="moneyCourse_buying_AUD">
+										<span>34,347</span>
+									</div>
+									<div class="moneyCourse_buying_CNY">
+										<span>34,347</span>
+									</div>
+
+								</div>
+							</div>
+							<div class="moneyCourse_selling">
+								<h2>Продажа</h2>
+								<div class="moneyCourse_buying_values">
+									<div class="moneyCourse_buying_RUB">
+										<span>3,224</span>
+									</div>
+									<div class="moneyCourse_buying_USD">
+										<span>34,347</span>
+									</div>
+									<div class="moneyCourse_buying_EUR">
+										<span>34,347</span>
+									</div>
+									<div class="moneyCourse_buying_GBP">
+										<span>34,347</span>
+									</div>
+									<div class="moneyCourse_buying_AUD">
+										<span>34,347</span>
+									</div>
+									<div class="moneyCourse_buying_CNY">
+										<span>34,347</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section> -->
+	</main>
+	<footer>
+
+	</footer>
+	<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js'></script>
+	<script type='text/javascript'>
+
+	</script>
+	<script src="scripts.js">
+
+	</script>
+</body>
+
+</html>

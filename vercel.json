@@ -1,0 +1,23 @@
+{
+	"version": 2,
+	"builds": [
+		{
+			"src": "server.js",
+			"use": "@vercel/node"
+		}
+	],
+	"env": {
+		"PUPPETEER_EXECUTABLE_PATH": "/usr/bin/chromium-browser",
+		"CHROMIUM_BIN": "/usr/bin/chromium-browser",
+		"PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "true"
+	},
+	"routes": [
+		{
+			"handle": "filesystem"
+		},
+		{
+			"src": "/(.*)",
+			"dest": "server.js"
+		}
+	]
+}

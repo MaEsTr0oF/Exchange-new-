@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&display=swap" rel="stylesheet">
+	<title>Конвертер валют</title>
+	<link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+	<header class="header">
+		<div class="header_container container">
+			<div class="header_content">
+				<div class="header_menu">
+					<span class="header_calc">Калькулятор</span>
+					<span class="header_adv">Преимущества</span>
+					<span class="header_more">Доп. услуги</span>
+					<span class="header_com">Отзывы</span>
+					<span class="header_con">Контакты</span>
+					<span class="header_lan">RU <img src="./img/arr.png" alt=""></span>
+				</div>
+				<div class="header_logo">
+					<img src="./img/Logo.png" alt="">
+				</div>
+			</div>
+		</div>
+		<!-- Бургер-меню -->
+		<div class="burger">
+			<span></span>
+
+		</div>
+		<div class="burger_menu">
+			<!-- Сюда будут перемещаться пункты меню -->
+			<div class="header_logo hidden">
+				<img src="./img/Logo.png" alt="">
+			</div>
+		</div>
+
+	</header>
+
+	<main>
+		<section class="banner">
+			<div class="banner_container container">
+				<div class="banner_content">
+					<div class="banner_title">
+						<img src="./img/Logo2.png" alt="">
+					</div>
+					<div class="banner_main-title">
+						<div class="banner_sub-title">ЛИЦЕНЗИОННЫЙ <br> ОБМЕННИК В ТАЙЛАНДЕ</div>
+						<img src="./img/banner.png" alt="">
+					</div>
+					<div class="banner_action action">
+						<div class="action_convert">
+							<button class="btn-convert"><span>Конвертировать</span> <img src="./img/arr-right.png"
+									alt=""></button>
+						</div>
+						<div class="action_part">
+							<button class="btn-part"><span>Стать партнером</span> <img src="./img/arr-right2.png"
+									alt=""></button>
+						</div>
+						<div class="action_image">
+							<img src="./img/phones.png" alt="">
+						</div>
+						<div class="action_icons">
+							<a href="" class="teleg"><img src="./img/teleg.png" alt=""></a>
+							<a href="" class="teleg"><img src="./img/inst.png" alt=""></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="cours-exchange">
+			<div class="cours-exchange_container container">
+				<div class="cours-exchange_content">
+					<div class="exchange">
+						<div class="exchange_content">
+							<div class="exchange_header">
+								<h2>Лицензированная сеть обмена</h2>
+							</div>
+							<div class="exchange_calc calc">
+								<div class="calc_main-title">
+									<h2>1. Вы меняете:</h2>
+									<div class="calc_first">
+										<img src="./img/lock.png" alt="замок">
+										<span>Безопасный обмен</span>
+									</div>
+								</div>
+								<div class="calc_select-input">
+									<select id="toCurrency">
+										<option value="first">RUB → THB</option>
+										<option value="second">USDT → THB</option>
+										<option value="third">EUR → THB</option>
+									</select>
+									<input type="number" id="amount" placeholder="Сумма">
+									<span id="start-val"></span>
+								</div>
+								<div class="calc_sub-title">
+									<h2>2. Вы получаете:</h2>
+								</div>
+								<div class="calc_result">
+									<div class="calc_res-sum"><span id="result"></span></div>
+									<span id="final-val">Бат</span>
+								</div>
+								<div class="exchange_course">
+									<h2>обменный курс: </h2> <span id="exc-val"></span>
+								</div>
+								<a href="https://t.me/EVAexchange_bot" class="exchange_teleg"><span class="teleg_text">Обменять
+										в Telegram</span>
+								</a>
+								<div class="exchange_text">При обмене 10.000 бат — лучший курс</div>
+							</div>
+						</div>
+					</div>
+					<div class="course">
+						<div class="course_content">
+							<div class="course_header">
+								<h2>Курс обмена валюты</h2>
+							</div>
+							<div class="course_value">
+								<div class="course_title">
+									<h2>Валюта</h2>
+									<h2>Покупка</h2>
+									<h2>Продажа</h2>
+									<div class="SBP"><img src="./img/flags/SBP.png" alt=""><span>СБП</span></div>
+									<span class="buying-SBP">3.23</span>
+									<span class="selling-SBP">3.23</span>
+									<div class="RUB"><img src="./img/flags/RUS.png" alt=""><span>RUB</span></div>
+									<span class="buying-RUB">3.23</span>
+									<span class="selling-RUB">3.23</span>
+									<div class="USD5"><img src="./img/flags/USD.png" alt=""><span>USD 50-100</span></div>
+									<span class="buying-USD5">3.23</span>
+									<span class="selling-USD5">3.23</span>
+									<!-- <div class="USD100"><img src="./img/flags/USD.png" alt=""><span>USD 100 old</span></div>
+									<span class="buying">3.23</span>
+									<span class="selling">3.23</span> -->
+									<div class="USD20"><img src="./img/flags/USD.png" alt=""><span>USD 5-20</span></div>
+									<span class="buying-USD20">3.23</span>
+									<span class="selling-USD20">3.23</span>
+									<div class="USD2"><img src="./img/flags/USD.png" alt=""><span>USD1-2</span></div>
+									<span class="buying-USD2">3.23</span>
+									<span class="selling-USD2">3.23</span>
+									<div class="EUR"><img src="./img/flags/EUR.png" alt=""><span>EUR</span></div>
+									<span class="buying-EUR">3.23</span>
+									<span class="selling-EUR">3.23</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="getting">
+			<div class="getting_container container">
+				<div class="getting_content">
+					<div class="getting_header title-header">
+						<h2>Как получить наличные баты</h2>
+					</div>
+					<div class="getting_sub-header">
+						<h2>Выберите удобный способ получения или свяжитесь с нами в <a
+								href="https://t.me/EVAexchange_bot">Telegram</a>
+						</h2>
+					</div>
+					<div class="getting_types">
+						<div class="getting_image">
+							<img src="./img/getting/baground.png" alt="">
+						</div>
+						<div class="getting_ATM ATM">
+							<div class="ATM_text">
+								<h2>В банкомате</h2>
+								<span>Банковская карта не понадобится</span>
+								<a href="">Подробнее</a>
+							</div>
+							<div class="ATM_image">
+								<img src="./img/getting/ATM.png" class="background" alt="">
+							</div>
+						</div>
+						<div class="getting_delivery delivery">
+							<div class="delivery_text">
+								<h2>Доставка<br> наличных бат</h2>
+								<span>Курьером до двери</span>
+								<a href="">Хочу доставку</a>
+							</div>
+							<div class="delivery_image">
+								<img src="./img/getting/delivery.png" alt="">
+							</div>
+						</div>
+						<div class="getting_bank bank">
+							<div class="bank_text">
+								<h2>На счет тайского банка</h2>
+								<span>Перевод денег по реквизитам</span>
+								<a href="">Подробнее</a>
+							</div>
+							<div class="bank_image">
+								<img src="./img/getting/bank.png" alt="">
+							</div>
+						</div>
+						<div class="getting_office office">
+							<div class="office_text">
+								<h2>В офисе</h2>
+								<span>Обменивайте валюту в нашем офисе</span>
+								<a href="">Где мы?</a>
+							</div>
+							<div class="office_image">
+								<img src="./img/getting/office.png" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="pluses">
+			<div class="pluses_container container">
+				<div class="pluses_content">
+					<div class="pluses_title title-main">
+						<h2>преимущества</h2>
+					</div>
+					<div class="pluses_columns">
+						<div class="pluses_column">
+							<div class="pluses_row"><img src="./img/pluses.png" alt="">Перевод денег с российских карт любого
+								банка</div>
+							<div class="pluses_row"><img src="./img/pluses.png" alt="">Обновление курса валют каждые 5 минут
+							</div>
+							<div class="pluses_row"><img src="./img/pluses.png" alt="">Быстрое и удобное получение наличных
+							</div>
+							<div class="pluses_row"><img src="./img/pluses.png" alt="">Нет скрытых наценок</div>
+						</div>
+						<div class="pluses_column">
+							<div class="pluses_row"><img src="./img/pluses.png" alt="">Удобное расположение офиса у Bangla Road
+							</div>
+							<div class="pluses_row"><img src="./img/pluses.png" alt="">Зона отдыха, напитки и бесплатный <br>
+								Wi-Fi
+								в офисе</div>
+							<div class="pluses_row"><img src="./img/pluses.png" alt="">Отзывчивый русско- и англоязычный
+								персонал</div>
+							<div class="pluses_row"><img src="./img/pluses.png" alt="">Гарантия конфиденциальности: отдельная
+								VIP-комната для крупных сделок</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="countries">
+			<div class="country_container container">
+				<div class="countries-section">
+					<div class="countries_title title-main">
+						<h2>СТРАНЫ, С КОТОРЫМИ <br> МЫ РАБОТАЕМ</h2>
+					</div>
+					<div class="countries_container">
+						<div class="contries_row">
+							<div class="country_item">
+								<img src="./img/contries/1.png" alt="Флаг Сингапура">
+								<span>Сингапур</span>
+							</div>
+							<div class="country_item">
+								<img src="./img/contries/2.png" alt="Флаг Литвы">
+								<span>Литва</span>
+							</div>
+							<div class="country_item">
+								<img src="./img/contries/3.png" alt="Флаг Индонезии">
+								<span>Индонезия</span>
+							</div>
+							<div class="country_item">
+								<img src="./img/contries/4.png" alt="Флаг Италии">
+								<span>Италия</span>
+							</div>
+						</div>
+						<div class="contries_row">
+							<div class="country_item">
+								<img src="./img/contries/5.png" alt="Флаг Франции">
+								<span>Франция</span>
+							</div>
+
+							<div class="country_item">
+								<img src="./img/contries/6.png" alt="Флаг Таиланда">
+								<span>Таиланд</span>
+							</div>
+
+							<div class="country_item">
+								<img src="./img/contries/7.png" alt="Флаг Германии">
+								<span>Германия</span>
+							</div>
+
+							<div class="country_item">
+								<img src="./img/contries/8.png" alt="Флаг Латвии">
+								<span>Латвия</span>
+							</div>
+						</div>
+						<div class="contries_row">
+							<div class="country_item">
+								<img src="./img/contries/9.png" alt="Флаг ОАЭ">
+								<span>Дубай (ОАЭ)</span>
+							</div>
+
+							<div class="country_item">
+								<img src="./img/contries/10.png" alt="Флаг Китая">
+								<span>Китай</span>
+							</div>
+						</div>
+						<div class="contries_row">
+							<div class="country_item">
+								<img src="./img/contries/11.png" alt="Флаг Венгрии">
+								<span>Венгрия</span>
+							</div>
+
+							<div class="country_item">
+								<img src="./img/contries/12.png" alt="Флаг Монако">
+								<span>Монако</span>
+							</div>
+
+							<div class="country_item">
+								<img src="./img/contries/13.png" alt="Флаг Испании">
+								<span>Испания</span>
+							</div>
+						</div>
+						<div class="contries_row">
+							<div class="country_item">
+								<img src="./img/contries/14.png" alt="Флаг Армении">
+								<span>Армения</span>
+							</div>
+
+							<div class="country_item">
+								<img src="./img/contries/15.png" alt="Флаг Чехии">
+								<span>Чехия</span>
+							</div>
+
+							<div class="country_item">
+								<img src="./img/contries/16.png" alt="Флаг Болгарии">
+								<span>Болгария</span>
+							</div>
+						</div>
+						<div class="contries_row">
+							<div class="country_item spec">
+								<img src="./img/contries/17.png" alt="Флаг Азербайджана">
+								<span>Азербайджан</span>
+							</div>
+
+							<div class="country_item">
+								<img src="./img/contries/18.png" alt="Флаг Турции">
+								<span>Турция</span>
+							</div>
+
+							<div class="country_item">
+								<img src="./img/contries/19.png" alt="Флаг Грузии">
+								<span>Грузия</span>
+							</div>
+						</div>
+						<div class="contries_row">
+							<div class="country_item">
+								<img src="./img/contries/20.png" alt="Флаг Израиля">
+								<span>Израиль</span>
+							</div>
+
+							<div class="country_item">
+								<img src="./img/contries/21.png" alt="Флаг Кипра">
+								<span>Кипр</span>
+							</div>
+						</div>
+						<div class="contries_row">
+
+							<div class="country_item">
+								<img src="./img/contries/22.png" alt="Флаг Ирана">
+								<span>Иран</span>
+							</div>
+							<div class="country_item">
+								<img src="./img/contries/23.png" alt="Флаг США">
+								<span>США</span>
+							</div>
+
+							<div class="country_item">
+								<img src="./img/contries/24.png" alt="Флаг Дании">
+								<span>Дания</span>
+							</div>
+
+							<div class="country_item">
+								<img src="./img/contries/25.png" alt="Флаг России">
+								<span>Россия</span>
+							</div>
+						</div>
+						<div class="contries_row">
+							<div class="country_item">
+								<img src="./img/contries/26.png" alt="Флаг Австралии">
+								<span>Австралия</span>
+							</div>
+						</div>
+						<div class="contries_row">
+							<div class="country_item">
+								<img src="./img/contries/27.png" alt="Флаг Сербии">
+								<span>Сербия</span>
+							</div>
+
+							<div class="country_item">
+								<img src="./img/contries/28.png" alt="Флаг Голландии">
+								<span>Голландия</span>
+							</div>
+
+							<div class="country_item">
+								<img src="./img/contries/29.png" alt="Флаг Беларуси">
+								<span>Беларусь</span>
+							</div>
+						</div>
+						<div class="contries_row">
+							<div class="country_item">
+								<img src="./img/contries/30.png" alt="Флаг Польши">
+								<span>Польша</span>
+							</div>
+
+							<div class="country_item">
+								<img src="./img/contries/31.png" alt="Флаг Англии">
+								<span>Англия</span>
+							</div>
+
+							<div class="country_item">
+								<img src="./img/contries/32.png" alt="Флаг Швейцарии">
+								<span>Швейцария</span>
+							</div>
+
+							<div class="country_item">
+								<img src="./img/contries/33.png" alt="Флаг Узбекистана">
+								<span>Узбекистан</span>
+							</div>
+						</div>
+					</div><!-- .countries_container -->
+				</div>
+			</div>
+			</div>
+		</section>
+		<section class="instraction">
+			<div class="instraction_container container">
+				<div class="instraction_content">
+					<div class="instraction_title title-main">
+						Инструкции по <br>снятию наличных<br>
+						в банкоматах
+					</div>
+					<div class="instaraction_types">
+						<div class="instraction_image">
+							<img src="./img/instraction/backgroud.png" alt="">
+						</div>
+						<div class="instraction_type inst-type">
+							<div class="inst-type_header">
+								<img src="./img/instraction/type1.png" alt="">
+							</div>
+							<div class="inst-type_sub-header">
+								<h2>Время получения наличных 2 мин.</h2>
+							</div>
+							<ul class="inst-type_content">
+								<li class="inst-type_row">Нажмите кнопку <br>«Cardless Withdrawal/ATM».</li>
+								<li class="inst-type_row">Нажмите кнопку <br>«Bangkok Bank Mobile Banking».</li>
+								<li class="inst-type_row">Банкомат покажет QR-код, который нужно сфотографировать и отправить в
+									чат оператору. Код действителен в течение 30 секунд!</li>
+								<li class="inst-type_row">После подтверждения оператора в чате, нажмите кнопку «Confirm», чтобы
+									получить сумму.</li>
+								<li class="inst-type_row inst-type_money">Получите деньги.</li>
+							</ul>
+						</div>
+						<div class="instraction_type inst-type">
+							<div class="inst-type_header">
+								<img src="./img/instraction/type2.png" alt="">
+							</div>
+							<div class="inst-type_sub-header">
+								<h2>Время получения наличных 2 мин.</h2>
+							</div>
+							<ul class="inst-type_content">
+								<li class="inst-type_row">Нажмите кнопку <br>«Cardless Withdrawal/ATM».</li>
+								<li class="inst-type_row">Нажмите кнопку «English» <br>для выбора английского языка.</li>
+								<li class="inst-type_row">Нажмите кнопку <br>«Krungsri Cardless».</li>
+								<li class="inst-type_row">Введите номер телефона и сумму снятия из сообщения оператора и нажмите
+									«Correct».</li>
+								<li class="inst-type_row">Введите Код из сообщения оператора и нажмите «Correct».</li>
+								<li class="inst-type_row inst-type_money">Получите деньги.</li>
+							</ul>
+						</div>
+						<div class="instraction_type inst-type">
+							<div class="inst-type_header">
+								<img src="./img/instraction/type3.png" alt="">
+							</div>
+							<div class="inst-type_sub-header">
+								<h2>Время получения наличных 2 мин.</h2>
+							</div>
+							<ul class="inst-type_content">
+								<li class="inst-type_row">Нажмите кнопку <br>«Cardless Withdrawal/ATM».</li>
+								<li class="inst-type_row">Нажмите кнопку <br>«Kasikorn Bank Mobile Banking»</li>
+								<li class="inst-type_row">Банкомат покажет QR-код, который нужно сфотографировать и отправить в
+									чат оператору. Код действителен в течение 30 секунд!</li>
+								<li class="inst-type_row">После подтверждения оператора в чате, нажмите кнопку «Confirm», чтобы
+									получить сумму.</li>
+								<li class="inst-type_row inst-type_money">Получите деньги.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer>
+
+	</footer>
+	<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js'></script>
+	<script type='text/javascript'>
+
+	</script>
+	<script src="./js/scripts.js">
+
+	</script>
+</body>
+
+</html>

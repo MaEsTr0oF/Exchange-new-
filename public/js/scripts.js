@@ -43,9 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 	window.addEventListener('resize', moveToBurger);
 	moveToBurger();
 	 const data =await fetchCurrencyRates();
-	 
-	 data =await fetchCurrencyRates();
-	 data =await fetchCurrencyRates();
+	
 	function calculateConversion() {
 		if (!data) return;  // Проверка, загружены ли данные
 

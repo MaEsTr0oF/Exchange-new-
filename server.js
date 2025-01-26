@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Подключаем puppeteer-core для работы с API
 const puppeteer = require('puppeteer-core'); // Используем puppeteer-core, чтобы указать путь к установленному Chromium
-
+const valFLAG = ['SBP', 'RUB', 'USD20', 'USD5', 'USD2', 'EUR', 'EUR1'];
 async function fetchCurrencyRates() {
 	// Настраиваем Puppeteer для использования Chromium
 	const browser = await puppeteer.launch({

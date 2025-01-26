@@ -46,6 +46,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 	// Функция для обновления значений покупки и продажи
 
 	await fetchCurrencyRates();
+	while(data==undefined){
+		await fetchCurrencyRates();
+		console.log("Не работает");
+	}
 	console.log(data);
 	async function fillSpan() {
 		for (const currency in data) {

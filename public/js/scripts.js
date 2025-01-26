@@ -183,6 +183,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 			rearrangeCountries();
 		}
 	});
+	document.querySelectorAll('.FAQ_card .card_title').forEach(title => {
+		title.addEventListener('click', function () {
+			const card = this.parentElement;
+			const image =card.querySelector(".toggle_button");
+			if(image.src.split("/")[5]=="button.png"){
+				image.src="./img/button2.png";
+			}else{
+				image.src="./img/button.png";
+			}
+				
+			card.classList.toggle('active');
+		});
+	});
 });
 
 

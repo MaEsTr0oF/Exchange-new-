@@ -201,7 +201,7 @@ main {
     font-size: 18px;
   }
   .header_logo img {
-    width: 80px;
+    width: 120px;
   }
 }
 @media (max-width: 900px) {
@@ -216,7 +216,7 @@ main {
     height: 60px;
   }
   .header_logo img {
-    width: 50px;
+    width: 70px;
   }
   .header_menu {
     width: auto;
@@ -231,7 +231,7 @@ main {
     display: block;
     position: absolute;
     top: 38%;
-    right: 10%;
+    right: 15%;
   }
   .header_lan img {
     object-fit: cover;
@@ -641,76 +641,57 @@ main {
   }
 }
 @media (max-width: 400px) {
-  .action_image img {
-    transform: translate(-155%, -115%);
-    width: 100px;
+  .banner_main-title {
+    width: 400px;
   }
   .banner_main-title img {
-    transform: translate(-50%, -65%);
-    width: 350px;
+    transform: translate(-60%, -45%);
+    width: 600px;
+    height: 300px;
   }
-  .banner_main-title {
-    height: 90px;
+  .action_image img {
+    transform: translate(-55%, -115%);
+    width: 180px;
   }
-  .banner_sub-title {
-    margin-top: 0;
-  }
-  .action_icons {
-    position: absolute;
-    flex-direction: row;
-    gap: 10px;
-    top: 33%;
-    left: 70%;
-  }
-  .action_icons img {
-    width: 20px;
+  .action {
+    width: 300px;
+    margin-top: 60px;
   }
   .btn-part {
-    width: 150px;
-    height: 50px;
+    margin: 0;
+  }
+  .btn-part span {
+    padding: 0;
   }
   .btn-convert {
-    width: 150px;
-    height: 50px;
-  }
-}
-@media (max-width: 350px) {
-  .btn-convert {
-    width: 100px;
-    height: 40px;
-    font-size: 8px;
-  }
-  .btn-part {
-    width: 100px;
-    font-size: 8px;
-    height: 40px;
-  }
-  .btn-convert img {
-    width: 35px;
+    margin: 0;
   }
   .btn-convert span {
     padding: 0;
   }
-  .btn-part img {
-    width: 35px;
-  }
   .banner_sub-title {
-    font-size: 25px;
-    width: auto;
-  }
-  .banner_sub-title {
-    font-size: 12px;
-  }
-  .action_image img {
-    transform: translate(-75%, -105%);
-    width: 100px;
+    width: 200px;
   }
   .action_icons {
     position: absolute;
     flex-direction: row;
     gap: 10px;
-    top: 33%;
-    left: 83%;
+    top: 30%;
+    right: 0%;
+    left: 0%;
+    transform: translate(70%, -50%);
+  }
+  .action_icons img {
+    width: 30px;
+  }
+}
+@media (max-width: 350px) {
+  .action_image img {
+    transform: translate(-80%, -105%);
+    width: 180px;
+  }
+  .action {
+    margin-top: 45px;
   }
 }
 .cours-exchange {
@@ -3285,7 +3266,7 @@ main {
   .footer_menu {
     margin-right: 120px;
     display: grid;
-    width: 400px;
+    width: 300px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
   }

@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 	window.addEventListener('resize', moveToBurger);
 	moveToBurger();
 	 const data =await fetchCurrencyRates();
-	
+	console.log(data);
 	function calculateConversion() {
 		if (!data) return;  // Проверка, загружены ли данные
 
@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 			return await response.json();
 		} catch (error) {
 			console.error('Ошибка при получении курсов:', error);
+			fetchCurrencyRates();
 		}
 	}
 	// Функция для обновления значений покупки и продажи

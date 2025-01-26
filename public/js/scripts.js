@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 	const startVal = document.getElementById('start-val');
 	const finishSpan = document.getElementById('exc-val');
 
-	let data = null;
+	 const data =await fetchCurrencyRates();
 	function calculateConversion() {
 		if (!data) return;  // Проверка, загружены ли данные
 
@@ -44,12 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 		}
 	}
 	// Функция для обновления значений покупки и продажи
-
-	await fetchCurrencyRates();
-	while(data==undefined){
-		await fetchCurrencyRates();
-		console.log("Не работает");
-	}
+	console.log("Не работает");
 	console.log(data);
 	async function fillSpan() {
 		for (const currency in data) {

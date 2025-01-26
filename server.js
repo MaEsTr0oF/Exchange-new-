@@ -34,7 +34,7 @@ async function fetchCurrencyRates() {
 	});
 
 	// Ждем загрузки данных
-	await new Promise((resolve) => setTimeout(resolve, 1000));
+	await new Promise((resolve) => setTimeout(resolve, 5000));
 
 		const data = await page.evaluate((valFLAG) => {
 			const result = {};

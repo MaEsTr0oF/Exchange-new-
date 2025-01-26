@@ -4,7 +4,44 @@ document.addEventListener('DOMContentLoaded', async () => {
 	const resultSpan = document.getElementById('result');
 	const startVal = document.getElementById('start-val');
 	const finishSpan = document.getElementById('exc-val');
+	const burger = document.querySelector('.burger');
+	const burgerMenu = document.querySelector('.burger_menu');
+	const navigation = document.querySelector('.header_menu');
+	const header = document.querySelector('.header');
 
+	const items = {
+		905: document.querySelector('.header_calc'),
+		904: document.querySelector('.header_adv'),
+		903: document.querySelector('.header_more'),
+		902: document.querySelector('.header_com'),
+		901: document.querySelector('.header_con'),
+	};
+
+	const toggleMenu = () => {
+		burger.classList.toggle('open');
+		burgerMenu.classList.toggle('open');
+	};
+
+	burger.addEventListener('click', toggleMenu);
+
+	const moveToBurger = () => {
+		const width = window.innerWidth;
+		const image = document.querySelector(".background");
+		for (const breakpoint in items) {
+			const item = items[breakpoint];
+			if (width <= breakpoint) {
+				if (item && !burgerMenu.contains(item)) burgerMenu.appendChild(item);
+			} else {
+				if (item && !navigation.contains(item)) navigation.appendChild(item);
+			}
+		}
+		if (width <= 1100) {
+			image.src = "../img/getting/ATM2.png";
+		}
+	};
+
+	window.addEventListener('resize', moveToBurger);
+	moveToBurger();
 	 const data =await fetchCurrencyRates();
 	function calculateConversion() {
 		if (!data) return;  // Проверка, загружены ли данные
@@ -66,44 +103,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 	amountInput.addEventListener('input', calculateConversion);
 	currencySelect.addEventListener('change', calculateConversion);
 	//==============================================================================================================
-	const burger = document.querySelector('.burger');
-	const burgerMenu = document.querySelector('.header_menu');
-	const navigation = document.querySelector('.header_menu');
-	const header = document.querySelector('.header');
-
-	const items = {
-		905: document.querySelector('.header_calc'),
-		904: document.querySelector('.header_adv'),
-		903: document.querySelector('.header_more'),
-		902: document.querySelector('.header_com'),
-		901: document.querySelector('.header_con'),
-	};
-
-	const toggleMenu = () => {
-		burger.classList.toggle('open');
-		burgerMenu.classList.toggle('open');
-	};
-
-	burger.addEventListener('click', toggleMenu);
-
-	const moveToBurger = () => {
-		const width = window.innerWidth;
-		const image = document.querySelector(".background");
-		for (const breakpoint in items) {
-			const item = items[breakpoint];
-			if (width <= breakpoint) {
-				if (item && !burgerMenu.contains(item)) burgerMenu.appendChild(item);
-			} else {
-				if (item && !navigation.contains(item)) navigation.appendChild(item);
-			}
-		}
-		if (width <= 1100) {
-			image.src = "../img/getting/ATM2.png";
-		}
-	};
-
-	window.addEventListener('resize', moveToBurger);
-	moveToBurger();
+	
 	function rearrangeCountries() {
 		// Получаем все элементы стран
 		const container = document.querySelector(".countries_container");
@@ -155,9 +155,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 				lastRow.prepend(prevRow.lastElementChild);
 			}
 		}
-		if (secondLastRow.children.length === 1 && allRows.length > 1) {
 			moveCountryItem(7, 5);
-		}
 	}
 	function moveCountryItem(fromRowIndex, toRowIndex) {
 		// Получаем все строки
@@ -181,6 +179,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 			rearrangeCountries();
 		}
 	});
+	rearrangeCountries();
 	document.querySelectorAll('.FAQ_card .card_title').forEach(title => {
 		title.addEventListener('click', function () {
 			const card = this.parentElement;

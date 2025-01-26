@@ -36,6 +36,10 @@ body {
   background-color: rgb(236, 226, 216);
 }
 
+main {
+  overflow: hidden;
+}
+
 h1 {
   margin-top: 20px;
 }
@@ -51,12 +55,12 @@ select, input, button {
 
 .burger_menu {
   background-color: #E0D4C7;
-  width: 40%;
+  width: 30%;
   height: 100vw;
   display: none;
   font-size: 30px;
   position: absolute;
-  left: 70%;
+  left: 64.5%;
   padding-left: 10px;
   align-items: start;
   justify-content: start;
@@ -147,7 +151,6 @@ main {
 
 /* Медиа-запросы для видимости бургера */
 .header {
-  overflow: hidden;
   margin-top: 60px;
   position: relative;
 }
@@ -337,7 +340,7 @@ main {
     position: absolute;
     flex-direction: row;
     gap: 10px;
-    top: 43%;
+    top: 41%;
     left: 85%;
     transform: translate(-10%, -30%);
   }
@@ -1033,7 +1036,10 @@ main {
     width: auto;
   }
   .calc_select-input {
-    width: 100%;
+    width: 90%;
+  }
+  .exchange_course {
+    width: 90%;
   }
   .calc_result {
     gap: 10px;
@@ -1053,6 +1059,12 @@ main {
   }
   .course_title h2 {
     font-size: 20px;
+  }
+  .calc_main-title {
+    width: 90%;
+  }
+  .calc_sub-title {
+    width: 90%;
   }
 }
 @media (max-width: 1100px) {
@@ -3308,7 +3320,19 @@ main {
   .footer_mor {
     width: 300px;
   }
-  .footer_image {
-    padding-left: 29px;
+  .footer_image img {
+    width: 280px;
+  }
+}
+.burger_menu.open {
+  z-index: 100;
+}
+
+@media (max-width: 1000px) {
+  .comments {
+    display: none;
+  }
+  .instraction_image {
+    display: none;
   }
 }/*# sourceMappingURL=styles.css.map */

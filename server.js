@@ -114,12 +114,4 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
 	console.log(`Сервер запущен на http://localhost:${port}`);
 });
-// Обработка главной страницы
-app.get('/', (req, res) => {
-	res.sendFile(path.join(__dirname, 'public', 'index.html')); // Отправляем главную страницу
-});
 
-// Запуск сервера
-app.listen(port, () => {
-	console.log(`Сервер запущен на http://localhost:${port}`);
-});

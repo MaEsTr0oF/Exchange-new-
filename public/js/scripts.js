@@ -24,10 +24,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 	};
 
 	burger.addEventListener('click', toggleMenu);
-	const data = fetchCurrencyRates();
+	const data = await fetchCurrencyRates();
 	console.log(data);
 	while(data==undefined){
-		data = fetchCurrencyRates();
+		data = await fetchCurrencyRates();
+		console.log("Не работает");
 	}
 	const moveToBurger = () => {
 		const width = window.innerWidth;
@@ -86,8 +87,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 		}
 	}
 	// Функция для обновления значений покупки и продажи
-	console.log("Не работает");
-	console.log(data);
 	async function fillSpan() {
 		for (const currency in data) {
 			const buyingElement = document.querySelector(`.buying-${currency}`);

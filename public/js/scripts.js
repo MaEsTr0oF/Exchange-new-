@@ -180,7 +180,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 			rearrangeCountries();
 		}
 	});
-	rearrangeCountries();
+	if (window.innerWidth <= 950) {
+		rearrangeCountries();
+	}
 	document.querySelectorAll('.FAQ_card .card_title').forEach(title => {
 		title.addEventListener('click', function () {
 			const card = this.parentElement;

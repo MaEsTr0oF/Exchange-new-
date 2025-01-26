@@ -25,6 +25,9 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
+html{
+	overflow-x: hidden;
+}
 body{ overflow-x: hidden; }
 body {
 	
@@ -728,8 +731,8 @@ main{
 		gap:10px;
 		top: 20%;
 		right:0%;
-		left:0%;
-		transform: translate(70%, -50%);
+		left:auto;
+		transform: translate(-10%, -50%);
 	}
 	.action_icons img{
 		width: 30px;

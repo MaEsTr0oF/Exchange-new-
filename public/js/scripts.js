@@ -1,3 +1,8 @@
+const data = fetchCurrencyRates();
+console.log(data);
+while(data==undefined){
+	data=fetchCurrencyRates();
+}
 document.addEventListener('DOMContentLoaded', async () => {
 	const amountInput = document.getElementById('amount');
 	const currencySelect = document.getElementById('toCurrency');
@@ -42,8 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 	window.addEventListener('resize', moveToBurger);
 	moveToBurger();
- const data =await fetchCurrencyRates();
-	console.log(data);
+ 
 	function calculateConversion() {
 		if (!data) return;  // Проверка, загружены ли данные
 

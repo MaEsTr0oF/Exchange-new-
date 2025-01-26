@@ -1,8 +1,4 @@
-const data = fetchCurrencyRates();
-console.log(data);
-while(data==undefined){
-	data=fetchCurrencyRates();
-}
+
 document.addEventListener('DOMContentLoaded', async () => {
 	const amountInput = document.getElementById('amount');
 	const currencySelect = document.getElementById('toCurrency');
@@ -28,7 +24,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 	};
 
 	burger.addEventListener('click', toggleMenu);
-
+	const data = fetchCurrencyRates();
+	console.log(data);
+	while(data==undefined){
+		data = fetchCurrencyRates();
+	}
 	const moveToBurger = () => {
 		const width = window.innerWidth;
 		const image = document.querySelector(".background");

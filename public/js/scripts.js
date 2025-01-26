@@ -36,10 +36,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 	}
 	async function fetchCurrencyRates() {
 		try {
-			const response = await fetch('/rates');  // Используем относительный путь
+			const response = await fetch('https://exchange-new-production.up.railway.app/rates');  // Используем публичный URL
 			if (!response.ok) throw new Error('Ошибка загрузки данных');
-			data = await response.json();  // Записываем загруженные данные в переменную data
-			console.log('Курсы валют:', data);
+			return await response.json();
 		} catch (error) {
 			console.error('Ошибка при получении курсов:', error);
 		}

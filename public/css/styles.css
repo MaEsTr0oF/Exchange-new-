@@ -28,16 +28,16 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
+  overflow-x: hidden;
+}
+
+body {
   font-family: "Montserrat", sans-serif;
   text-align: center;
   display: flex;
   flex-direction: column;
   flex: 1;
   background-color: rgb(236, 226, 216);
-}
-
-main {
-  overflow: hidden;
 }
 
 h1 {
@@ -1218,7 +1218,6 @@ main {
 @media (max-width: 450px) {
   .exchange_header {
     font-size: 20px;
-    height: 120px;
   }
   .calc_first span {
     display: none;
@@ -3334,5 +3333,22 @@ main {
   }
   .instraction_image {
     display: none;
+  }
+}
+@media (max-width: 500px) {
+  .footer_body {
+    width: 300px;
+  }
+  .map_image img {
+    width: 300px;
+  }
+  .getting_types {
+    overflow: hidden;
+  }
+  footer {
+    width: 320px;
+  }
+  .FAQ {
+    width: 320px;
   }
 }/*# sourceMappingURL=styles.css.map */

@@ -1017,24 +1017,28 @@ main {
   .calc_select-input input {
     width: auto;
   }
+  .calc_result input {
+    width: 100%;
+    font-size: 25px;
+    width: 380px;
+    height: 40px;
+    background: #F2F2F2;
+    border-radius: 20px;
+  }
   .calc_select-input select {
     width: auto;
   }
   .calc_select-input {
     width: 90%;
   }
+  .calc_result {
+    width: 90%;
+  }
   .exchange_course {
     width: 90%;
   }
-  .calc_result {
-    gap: 10px;
-  }
   .calc_res-sum {
     margin-left: 20px;
-  }
-  .calc_result span {
-    display: inline-block;
-    margin-right: 20px;
   }
   .exchange_content {
     position: relative;
@@ -1200,7 +1204,7 @@ main {
     overflow: visible;
   }
 }
-@media (max-width: 450px) {
+@media (max-width: 460px) {
   .exchange_header {
     font-size: 20px;
   }
@@ -1233,6 +1237,32 @@ main {
   }
   .exchange_course h2 {
     font-size: 20px;
+  }
+  .course_title span {
+    font-size: 16px;
+  }
+  .SBP {
+    padding-left: 30px;
+    gap: 10px;
+  }
+  .RUB {
+    padding-left: 30px;
+    gap: 10px;
+  }
+  .USD5 span {
+    width: 62px;
+  }
+  .USD100 span {
+    width: 55px;
+  }
+  .USD20 span {
+    width: 55px;
+  }
+  .USD2 span {
+    width: 52px;
+  }
+  .EUR {
+    gap: 10px;
   }
 }
 .getting {
@@ -3079,14 +3109,14 @@ main {
   border-bottom: 1px solid black;
   line-height: 130%;
   margin-top: 50px;
-  font-size: calc(15px + 13 * (100vw - 480px) / 1420);
+  font-size: calc(13px + 15 * (100vw - 320px) / 1580);
   border: 0 0 1px 0 solid black;
 }
 
 .card_text {
   display: none;
   color: #171717;
-  font-size: calc(16px + 14 * (100vw - 320px) / 1580);
+  font-size: calc(12px + 18 * (100vw - 320px) / 1580);
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   line-height: 42px;
@@ -3096,7 +3126,7 @@ main {
 
 .card_title {
   display: flex;
-  text-align: start;
+  text-align: center;
   justify-content: space-between;
 }
 
@@ -3105,7 +3135,7 @@ main {
   display: inline-flex;
   cursor: pointer;
   color: #171717;
-  font-size: calc(17px + 13 * (100vw - 320px) / 1580);
+  font-size: calc(14px + 16 * (100vw - 320px) / 1580);
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   text-transform: uppercase;
@@ -3117,6 +3147,7 @@ main {
 .card_title img {
   width: 40px;
   height: 40px;
+  margin: auto 0;
   transition: transform 0.3s ease;
 }
 
@@ -3331,7 +3362,7 @@ main {
     overflow: hidden;
   }
   footer {
-    width: 320px;
+    width: 100%;
   }
   .FAQ {
     width: 320px;

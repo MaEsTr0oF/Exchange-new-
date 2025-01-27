@@ -1,10 +1,12 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
 	const amountInput = document.getElementById('amount');
+	const amountInput1 = document.getElementById('amount1');
 	const currencySelect = document.getElementById('toCurrency');
 	const resultSpan = document.getElementById('result');
 	const startVal = document.getElementById('start-val');
-	const finishSpan = document.getElementById('exc-val');
+	const finalVal      = document.getElementById('final-val');
+	const excVal        = document.getElementById('exc-val');
 	const burger = document.querySelector('.burger');
 	const burgerMenu = document.querySelector('.burger_menu');
 	const navigation = document.querySelector('.header_menu');
@@ -48,35 +50,70 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 	window.addEventListener('resize', moveToBurger);
 	moveToBurger();
- 
-	function calculateConversion() {
-		if (!data) return;  // Проверка, загружены ли данные
-
-		const amount = parseFloat(amountInput.value) || 0;
-		let rate = 0;
+ 	//==============================================================================================================================
+	function getRate() {
 		switch (currencySelect.value) {
 			case 'first':
-				rate = parseFloat(data.RUB[0].split(" ")[0]);  // Берём первое значение из RUB, убираем лишние символы
+				const splitted = data.RUB[0].split(" ");        // ["0.314", "(3.182)"]
+      const withoutParentheses = splitted[1].replace(/[()]/g, "");  // "3.182"
+      return parseFloat(withoutParentheses);  
+			case 'second':
+				return parseFloat(data.USD5[0].split(" ")[0]);
+			case 'third':
+				return parseFloat(data.EUR[0].split(" ")[0]);
+			default:
+				return 0;
+		}
+	}
+	function updateLabelsAndRate() {
+		switch (currencySelect.value) {
+			case 'first':
 				startVal.textContent = "RUB";
-				finishSpan.textContent = data.RUB[0].split(" ")[0];
+				excVal.textContent = data.RUB[0].split(" ")[1].replace(/[()]/g, "");
 				break;
 			case 'second':
-				rate = parseFloat(data.USD5[0].split(" ")[0]); // Берём первое значение из USD5
-				startVal.textContent = "USD";
-				finishSpan.textContent = data.USD5[0].split(" ")[0];
+				startVal.textContent = "USDT";
+				excVal.textContent = data.USD5[0].split(" ")[0];
 				break;
 			case 'third':
-				rate = parseFloat(data.EUR[0].split(" ")[0]);  // Берём первое значение из EUR
 				startVal.textContent = "EUR";
-				finishSpan.textContent = data.EUR[0].split(" ")[0];
+				excVal.textContent = data.EUR[0].split(" ")[0];
 				break;
-			default:
-				rate = 0;
 		}
-
-		const result = (amount * rate).toFixed(2);
-		resultSpan.textContent = result;
 	}
+	function convertLeftToRight() {
+		const rate = getRate();
+		const fromValue = parseFloat(amountInput.value) || 0;
+		let koaf=1.05;
+		if((fromValue * rate)>25000*data.RUB[0].split(" ")[1].replace(/[()]/g, "")){
+			koaf=1;
+			console.log("HELLO");
+		}
+		amountInput1.value = (fromValue * rate*koaf).toFixed(2);
+	}
+	function convertRightToLeft() {
+		const rate = getRate();
+		const toValue = parseFloat(amountInput1.value) || 0;
+		let koaf=1.05;
+		if((25000*data.RUB[0].split(" ")[1].replace(/[()]/g, ""))<=toValue){
+			koaf=1;
+			console.log("HELLO");
+		}
+		amountInput.value = (toValue / rate).toFixed(2);
+	}
+	updateLabelsAndRate();
+	currencySelect.addEventListener('change', () => {
+		
+		updateLabelsAndRate();
+		
+		convertLeftToRight();
+	});
+	amountInput.addEventListener('input', () => {
+		convertLeftToRight();
+	});
+	amountInput1.addEventListener('input', () => {
+		convertRightToLeft();
+	});
 	async function fetchCurrencyRates() {
 		try {
 			const response = await fetch('https://exchange-new-production.up.railway.app/rates');  // Используем публичный URL
@@ -104,8 +141,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 		}
 	}
 	fillSpan();
-	amountInput.addEventListener('input', calculateConversion);
-	currencySelect.addEventListener('change', calculateConversion);
 	//==============================================================================================================
 	
 	function rearrangeCountries() {

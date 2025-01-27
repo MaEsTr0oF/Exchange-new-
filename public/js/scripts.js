@@ -59,8 +59,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       return parseFloat(withoutParentheses);  
 			case 'second':
 				return parseFloat(data.USD5[0].split(" ")[0]);
-			case 'third':
-				return parseFloat(data.EUR[0].split(" ")[0]);
 			default:
 				return 0;
 		}
@@ -69,37 +67,51 @@ document.addEventListener('DOMContentLoaded', async () => {
 		switch (currencySelect.value) {
 			case 'first':
 				startVal.textContent = "RUB";
-				excVal.textContent = data.RUB[0].split(" ")[1].replace(/[()]/g, "");
 				break;
 			case 'second':
 				startVal.textContent = "USDT";
-				excVal.textContent = data.USD5[0].split(" ")[0];
+				
 				break;
 			case 'third':
 				startVal.textContent = "EUR";
-				excVal.textContent = data.EUR[0].split(" ")[0];
 				break;
 		}
 	}
 	function convertLeftToRight() {
-		const rate = getRate();
+		const rate = getRate();  // бат за 1 руб.
 		const fromValue = parseFloat(amountInput.value) || 0;
-		let koaf=1.05;
-		if((fromValue * rate)>25000*data.RUB[0].split(" ")[1].replace(/[()]/g, "")){
-			koaf=1;
-			console.log("HELLO");
+	
+		// 25k руб в батах:
+		const rub25kInTHB = 25000 * parseFloat(data.RUB[0].split(" ")[1].replace(/[()]/g, ""));
+	
+		let koaf;
+		// Если пользователь ввёл > 25k руб (в батах) -> 1
+		if ((fromValue * rate) >= rub25kInTHB) {
+			koaf = 1;
+		} else {
+			koaf = 1 + (1 - ((fromValue * rate) / rub25kInTHB)) / 2;
 		}
-		amountInput1.value = (fromValue * rate*koaf).toFixed(2);
+	
+		amountInput1.value = (fromValue * rate * koaf).toFixed(2);
+		excVal.textContent = (rate * koaf).toFixed(2);
 	}
+	
 	function convertRightToLeft() {
 		const rate = getRate();
-		const toValue = parseFloat(amountInput1.value) || 0;
-		let koaf=1.05;
-		if((25000*data.RUB[0].split(" ")[1].replace(/[()]/g, ""))<=toValue){
-			koaf=1;
-			console.log("HELLO");
+		const toValue = parseFloat(amountInput1.value) || 0; // это бат
+	
+		// 25k руб в батах:
+		const rub25kInTHB = 25000 * parseFloat(data.RUB[0].split(" ")[1].replace(/[()]/g, ""));
+	
+		let koaf;
+		if (toValue >= rub25kInTHB) {
+			koaf = 1;
+		} else {
+			koaf = 1 + (1 - (toValue / rub25kInTHB)) / 2;
 		}
-		amountInput.value = (toValue / rate).toFixed(2);
+		amountInput.value = ((toValue / rate) * koaf).toFixed(2);
+	
+		excVal.textContent = (rate * koaf).toFixed(2);
 	}
 	updateLabelsAndRate();
 	currencySelect.addEventListener('change', () => {

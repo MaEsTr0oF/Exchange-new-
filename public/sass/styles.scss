@@ -1095,6 +1095,7 @@ main{
 	}
 	.calc_result{
 		width: 90%;
+		gap:0;
 	}
 	.exchange_course{
 		width: 90%;
@@ -3350,7 +3351,9 @@ main{
 		width: 300px;
 	}
 	.footer_image img{
-		width: 280px;
+		object-fit: cover;
+		width: 320px;
+		height: 100%;
 	}
 }
 .burger_menu.open{
@@ -3378,7 +3381,7 @@ main{
 		width: 100%;
 	}
 	.FAQ{
-		width: 320px;
+		width: 100%;
 	}
 	.burger_menu{
 		width: 50%;

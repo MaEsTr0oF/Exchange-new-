@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 	
 		// 25k руб в батах:
 		const rub25kInTHB = 25000 * parseFloat(data.RUB[0].split(" ")[1].replace(/[()]/g, ""));
-	
+		
 		let koaf;
 		// Если пользователь ввёл > 25k руб (в батах) -> 1
 		if ((fromValue * rate) >= rub25kInTHB) {
@@ -91,9 +91,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 		} else {
 			koaf = 1 + (1 - ((fromValue * rate) / rub25kInTHB)) / 2;
 		}
-	
-		amountInput1.value = (fromValue * rate * koaf).toFixed(2);
-		excVal.textContent = (rate * koaf).toFixed(2);
+		if(startVal.textContent == "RUB"){
+			amountInput1.value = (fromValue * rate * koaf).toFixed(2);
+			excVal.textContent = (rate * koaf).toFixed(2);
+		}else{
+			amountInput1.value = (fromValue * rate).toFixed(2);
+			excVal.textContent = (rate).toFixed(2);
+		}
 	}
 	
 	function convertRightToLeft() {
@@ -109,9 +113,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 		} else {
 			koaf = 1 + (1 - (toValue / rub25kInTHB)) / 2;
 		}
-		amountInput.value = ((toValue / rate) * koaf).toFixed(2);
+		if(startVal.textContent == "RUB"){
+			amountInput.value = ((toValue / rate) * koaf).toFixed(2);
 	
 		excVal.textContent = (rate * koaf).toFixed(2);
+		}else{
+			amountInput.value = (toValue / rate).toFixed(2);
+	
+		excVal.textContent = (rate).toFixed(2);
+		}
+		
 	}
 	updateLabelsAndRate();
 	currencySelect.addEventListener('change', () => {

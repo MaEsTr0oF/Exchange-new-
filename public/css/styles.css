@@ -1020,7 +1020,6 @@ main {
   .calc_result input {
     width: 100%;
     font-size: 25px;
-    width: 380px;
     height: 40px;
     background: #F2F2F2;
     border-radius: 20px;
@@ -3375,5 +3374,11 @@ main {
     padding-left: 10px;
     height: 480px;
     left: 50%;
+  }
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    box-shadow: none;
   }
 }/*# sourceMappingURL=styles.css.map */

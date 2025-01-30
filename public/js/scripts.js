@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 			koaf = 1 + (1 - (toValue / rub25kInTHB)) / 30;
 		}
 		if(startVal.textContent == "RUB"){
-			amountInput.value = ((toValue / rate * koaf)).toFixed(2);
+			amountInput.value = ((toValue * rate * koaf)).toFixed(2);
 	
 		excVal.textContent = (rate * koaf).toFixed(2);
 		}else{

@@ -89,10 +89,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 		if ((fromValue * rate) >= rub25kInTHB) {
 			koaf = 1;
 		} else {
-			koaf = 1 - (1 - ((fromValue * rate) / rub25kInTHB)) / 20;
+			koaf = 1 + (1 - ((fromValue * rate) / rub25kInTHB)) / 30;
 		}
 		if(startVal.textContent == "RUB"){
-			amountInput1.value = (fromValue * rate * koaf).toFixed(2);
+			amountInput1.value = (fromValue / (rate * koaf)).toFixed(2);
 			excVal.textContent = (rate * koaf).toFixed(2);
 		}else{
 			amountInput1.value = (fromValue * rate).toFixed(2);
@@ -111,10 +111,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 		if (toValue >= rub25kInTHB) {
 			koaf = 1;
 		} else {
-			koaf = 1 - (1 - (toValue / rub25kInTHB)) / 20;
+			koaf = 1 + (1 - (toValue / rub25kInTHB)) / 30;
 		}
 		if(startVal.textContent == "RUB"){
-			amountInput.value = ((toValue / rate) * koaf).toFixed(2);
+			amountInput.value = ((toValue / rate * koaf)).toFixed(2);
 	
 		excVal.textContent = (rate * koaf).toFixed(2);
 		}else{

@@ -148,19 +148,31 @@ document.addEventListener('DOMContentLoaded', async () => {
 	}
 	// Функция для обновления значений покупки и продажи
 	async function fillSpan() {
+		let i=0;
 		for (const currency in data) {
 			const buyingElement = document.querySelector(`.buying-${currency}`);
 			const sellingElement = document.querySelector(`.selling-${currency}`);
 			if (buyingElement) {
-				buyingElement.textContent = data[currency][0];
+				if(i<2){
+					buyingElement.textContent = data[currency][0].split(" ")[1].replace(/[()]/g, "");
+					
+				}else{
+					buyingElement.textContent = data[currency][0];
+				}
 			} else {
 				console.warn(`Элемент покупки не найден для ${currency}`);
 			}
 			if (sellingElement) {
-				sellingElement.textContent = data[currency][1];
+				if(i<2){
+					sellingElement.textContent = data[currency][1].split(" ")[1].replace(/[()]/g, "");
+				}else{
+					sellingElement.textContent = data[currency][1];
+				}
+				
 			} else {
 				console.warn(`Элемент продажи не найден для ${currency}`);
 			}
+			++i;
 		}
 	}
 	fillSpan();

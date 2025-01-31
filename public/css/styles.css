@@ -3206,8 +3206,12 @@ main {
   display: flex;
   flex-direction: column;
 }
-.map_image img {
-  width: calc(365px + 585 * (100vw - 320px) / 1580);
+.map_image iframe {
+  object-fit: cover;
+  width: calc(320px + 630 * (100vw - 320px) / 1580);
+}
+.map_image {
+  width: calc(320px + 630 * (100vw - 320px) / 1580);
 }
 
 @media (max-width: 720px) {

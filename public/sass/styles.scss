@@ -3218,8 +3218,12 @@ main{
 		flex-direction: column;
 	}
 
-	&_image img{
-		width: calc(365px + (950 - 365) * ((100vw - 320px) / (1900 - 320))); ;
+	&_image iframe{
+		object-fit: cover;
+		width: calc(320px + (950 - 320) * ((100vw - 320px) / (1900 - 320))); ;
+	}
+	&_image{
+		width: calc(320px + (950 - 320) * ((100vw - 320px) / (1900 - 320))); ;
 	}
 }
 @media (max-width:720px) {

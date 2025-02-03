@@ -1820,7 +1820,7 @@ main {
     align-items: center;
   }
 }
-@media (max-width: 425px) {
+@media (max-width: 485px) {
   .office_image {
     position: absolute;
     left: 50%;
@@ -1844,7 +1844,7 @@ main {
   .delivery_image img {
     object-fit: cover;
     width: 200px;
-    height: 240px;
+    height: 280px;
   }
   .ATM {
     position: relative;
@@ -1854,13 +1854,14 @@ main {
     position: absolute;
     margin-top: 0;
     padding-top: 0;
-    left: 49%;
+    left: 47%;
     height: 100%;
   }
   .ATM_image img {
     object-fit: cover;
     width: 200px;
     height: 280px;
+    padding-right: 20px;
   }
   .bank {
     position: relative;
@@ -1874,11 +1875,12 @@ main {
     margin-top: 0;
     padding-top: 0;
     height: 100%;
+   
   }
   .bank_image img {
     object-fit: cover;
-    width: 200px;
-    height: 280px;
+    width: 260px;
+    height: 290px;
   }
   .bank_text {
     width: 60%;
@@ -1902,6 +1904,31 @@ main {
   }
   .delivery_text {
     min-width: 200px;
+  }
+  .delivery_text a{
+    margin-bottom: 20px;
+  }
+  .delivery_text{
+    gap:30px;
+  }
+  .office_text{
+    padding: 15px 10px;
+  }
+  .office_text a{
+    margin-bottom: 20px;
+  }
+  .ATM_text a{
+    margin-bottom: 20px;
+  }
+  .ATM_text{
+    padding: 15px 10px;
+    gap:20px;
+  }
+  .bank_text h2{
+    padding-right: 0;
+  }
+  .bank_text span{
+    padding-right: 0;
   }
 }
 .pluses {
@@ -1942,11 +1969,16 @@ main {
   line-height: 39px;
   letter-spacing: 0.6px;
   word-wrap: break-word;
+  padding: 0 10px;
+  width: auto;
+  text-align: start;
+  
 }
 .pluses_row img {
   object-fit: cover;
   width: 60px;
   height: 60px;
+  margin-right:10px;
 }
 
 .title-main {
@@ -1982,7 +2014,7 @@ main {
 @media (max-width: 700px) {
   .pluses_row {
     color: #171717;
-    font-size: 20px;
+    font-size: 19px;
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     line-height: 26px;
@@ -2370,6 +2402,8 @@ main {
 }
 .inst-type_money {
   padding-left: 20px;
+ position: relative;
+ right:20px;
   padding-right: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -2476,6 +2510,7 @@ main {
   }
   .instraction_content span {
     font-size: 16px;
+    text-align: start;
   }
   .inst-type_content {
     gap: 5px;
@@ -2554,6 +2589,7 @@ main {
   gap: 10px;
   text-align: start;
   padding-left: 50px;
+  padding-top: 10px;
 }
 .presents_text h2 {
   color: #171717;
@@ -2928,7 +2964,7 @@ main {
 @media (max-width: 460px) {
   .presents_first {
     width: 300px;
-    height: 150px;
+    height: 180px;
     grid-column: 1;
     grid-row: 2;
     justify-self: end;
@@ -2949,7 +2985,7 @@ main {
   }
   .presents_content {
     grid-template-rows: 250px 250px 380px 250px;
-    grid-template-columns: 310px;
+    grid-template-columns: 1fr;
   }
   .presents .presents_image1 {
     position: relative;
@@ -3173,6 +3209,7 @@ main {
 .map_content {
   display: flex;
   justify-content: space-between;
+  gap:20px;
 }
 .map_contact {
   display: flex;
@@ -3212,6 +3249,7 @@ main {
 }
 .map_image {
   width: calc(320px + 630 * (100vw - 320px) / 1580);
+  height: 100%;
 }
 
 @media (max-width: 720px) {
@@ -3223,11 +3261,11 @@ main {
   .map_contact {
     display: flex;
     flex-direction: row;
-    gap: 50px;
+    gap: 30px;
   }
 }
 .footer {
-  margin-top: 150px;
+  margin-top: 100px;
 }
 .footer_content {
   display: flex;
@@ -3384,5 +3422,8 @@ main {
   select:focus {
     outline: none;
     box-shadow: none;
+  }
+  .instraction{
+    margin-top: 0;
   }
 }/*# sourceMappingURL=styles.css.map */

@@ -334,7 +334,7 @@ main {
 
 @media (max-width: 1700px) {
   .banner_title img {
-    width: 800px;
+    width: 750px;
   }
   .action_image img {
     transform: translate(-45%, -85%);
@@ -1534,7 +1534,7 @@ main {
   object-fit: container;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1600px) {
   .delivery {
     width: 600px;
   }
@@ -1548,8 +1548,8 @@ main {
     left: -70px;
   }
   .office_image img {
-    width: 350px;
-    height: 250px;
+    width: 310px;
+    height: 220px;
   }
   .getting_types {
     padding: 0;
@@ -1562,7 +1562,10 @@ main {
     height: 709px;
   }
   .ATM_image {
-    margin-top: 21px;
+    margin-top: 56px;
+  }
+  .ATM_image img{
+	width: 400px;
   }
 }
 @media (max-width: 1400px) {
@@ -1601,7 +1604,7 @@ main {
     font-size: 20px;
   }
 }
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .getting_image img {
     width: 950px;
     height: 709px;
@@ -2441,6 +2444,7 @@ main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 125px 125px 550px 125px 125px;
+	 width: 100%;
   }
   .instraction_title {
     padding: 0;
@@ -3158,6 +3162,7 @@ main {
   line-height: 42px;
   letter-spacing: 0.6px;
   word-wrap: break-word;
+  text-align: start;
 }
 
 .card_title {

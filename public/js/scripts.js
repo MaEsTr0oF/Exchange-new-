@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 	};
 
 	burger.addEventListener('click', toggleMenu);
-	const data = await fetchCurrencyRates();
+	let data = await fetchCurrencyRates();
 	console.log(data);
 	while(data==undefined){
 		data = await fetchCurrencyRates();
@@ -138,12 +138,43 @@ document.addEventListener('DOMContentLoaded', async () => {
 	});
 	async function fetchCurrencyRates() {
 		try {
+			// Показываем индикатор загрузки
+			document.querySelectorAll('.currency-rate').forEach(el => {
+				el.textContent = 'Загрузка...';
+			});
+			
 			// Используем относительный путь для локальной разработки и продакшена
 			const response = await fetch('/rates');
 			if (!response.ok) throw new Error('Ошибка загрузки данных');
 			return await response.json();
 		} catch (error) {
 			console.error('Ошибка при получении курсов:', error);
+			// Показываем сообщение об ошибке
+			document.querySelectorAll('.currency-rate').forEach(el => {
+				el.textContent = 'Ошибка загрузки';
+			});
+			
+			// Пробуем повторить запрос через 30 секунд
+			setTimeout(() => {
+				fetchCurrencyRates().then(newData => {
+					if (newData) {
+						data = newData;
+						fillSpan();
+						updateLabelsAndRate();
+					}
+				});
+			}, 30000);
+			
+			// Возвращаем резервные данные, чтобы сайт мог работать
+			return {
+				"SBP": ["3.23", "3.23"],
+				"RUB": ["3.23", "3.23"],
+				"USD20": ["3.23", "3.23"],
+				"USD5": ["3.23", "3.23"],
+				"USD2": ["3.23", "3.23"],
+				"EUR": ["3.23", "3.23"],
+				"EUR1": ["3.23", "3.23"]
+			};
 		}
 	}
 	// Функция для обновления значений покупки и продажи

@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', async () => {
 	const amountInput = document.getElementById('amount');
 	const amountInput1 = document.getElementById('amount1');
@@ -139,7 +138,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 	});
 	async function fetchCurrencyRates() {
 		try {
-			const response = await fetch('https://exchange-new-production.up.railway.app/rates');  // Используем публичный URL
+			// Используем относительный путь для локальной разработки и продакшена
+			const response = await fetch('/rates');
 			if (!response.ok) throw new Error('Ошибка загрузки данных');
 			return await response.json();
 		} catch (error) {

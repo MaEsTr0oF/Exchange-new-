@@ -1,0 +1,16 @@
+[build]
+  publish = "public"
+  command = "npm install"
+
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/rates"
+  to = "/.netlify/functions/rates"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200 

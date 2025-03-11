@@ -51,15 +51,28 @@ document.addEventListener('DOMContentLoaded', async () => {
 	moveToBurger();
  	//==============================================================================================================================
 	function getRate() {
-		switch (currencySelect.value) {
-			case 'first':
-				const splitted = data.RUB[0].split(" ");        // ["0.314", "(3.182)"]
-      const withoutParentheses = splitted[1].replace(/[()]/g, "");  // "3.182"
-      return parseFloat(withoutParentheses);  
-			case 'second':
-				return parseFloat(data.USD5[0].split(" ")[0]);
-			default:
-				return 0;
+		try {
+			switch (currencySelect.value) {
+				case 'first':
+					if (data.RUB[0].includes(" ")) {
+						const splitted = data.RUB[0].split(" ");        // ["0.314", "(3.182)"]
+						const withoutParentheses = splitted[1].replace(/[()]/g, "");  // "3.182"
+						return parseFloat(withoutParentheses);
+					} else {
+						return parseFloat(data.RUB[0]);
+					}
+				case 'second':
+					if (data.USD5[0].includes(" ")) {
+						return parseFloat(data.USD5[0].split(" ")[0]);
+					} else {
+						return parseFloat(data.USD5[0]);
+					}
+				default:
+					return 3.23; // Резервное значение
+			}
+		} catch (error) {
+			console.warn("Ошибка при получении курса:", error);
+			return 3.23; // Резервное значение в случае ошибки
 		}
 	}
 	function updateLabelsAndRate() {
@@ -81,7 +94,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 		const fromValue = parseFloat(amountInput.value) || 0;
 	
 		// 25k руб в батах:
-		const rub25kInTHB = 25000 * parseFloat(data.RUB[0].split(" ")[1].replace(/[()]/g, ""));
+		let rub25kInTHB;
+		try {
+			if (data.RUB[0].includes(" ")) {
+				rub25kInTHB = 25000 * parseFloat(data.RUB[0].split(" ")[1].replace(/[()]/g, ""));
+			} else {
+				rub25kInTHB = 25000 * parseFloat(data.RUB[0]);
+			}
+		} catch (error) {
+			console.warn("Ошибка при расчете rub25kInTHB:", error);
+			rub25kInTHB = 25000 * 3.23; // Используем резервное значение
+		}
 		
 		let koaf;
 		// Если пользователь ввёл > 25k руб (в батах) -> 1
@@ -104,7 +127,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 		const toValue = parseFloat(amountInput1.value) || 0; // это бат
 	
 		// 25k руб в батах:
-		const rub25kInTHB = 25000 * parseFloat(data.RUB[0].split(" ")[1].replace(/[()]/g, ""));
+		let rub25kInTHB;
+		try {
+			if (data.RUB[0].includes(" ")) {
+				rub25kInTHB = 25000 * parseFloat(data.RUB[0].split(" ")[1].replace(/[()]/g, ""));
+			} else {
+				rub25kInTHB = 25000 * parseFloat(data.RUB[0]);
+			}
+		} catch (error) {
+			console.warn("Ошибка при расчете rub25kInTHB в convertRightToLeft:", error);
+			rub25kInTHB = 25000 * 3.23; // Используем резервное значение
+		}
 	
 		let koaf;
 		if (toValue >= rub25kInTHB) {
@@ -114,14 +147,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 		}
 		if(startVal.textContent == "RUB"){
 			amountInput.value = ((toValue * rate * koaf)).toFixed(2);
-	
-		excVal.textContent = (rate * koaf).toFixed(2);
 		}else{
 			amountInput.value = (toValue / rate).toFixed(2);
-	
-		excVal.textContent = (rate).toFixed(2);
 		}
-		
 	}
 	updateLabelsAndRate();
 	currencySelect.addEventListener('change', () => {
@@ -167,13 +195,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 			
 			// Возвращаем резервные данные, чтобы сайт мог работать
 			return {
-				"SBP": ["3.23", "3.23"],
-				"RUB": ["3.23", "3.23"],
-				"USD20": ["3.23", "3.23"],
-				"USD5": ["3.23", "3.23"],
-				"USD2": ["3.23", "3.23"],
-				"EUR": ["3.23", "3.23"],
-				"EUR1": ["3.23", "3.23"]
+				"SBP": ["0.314 (3.18)", "0.314 (3.18)"],
+				"RUB": ["0.314 (3.18)", "0.314 (3.18)"],
+				"USD20": ["0.314 (3.18)", "0.314 (3.18)"],
+				"USD5": ["0.314 (3.18)", "0.314 (3.18)"],
+				"USD2": ["0.314 (3.18)", "0.314 (3.18)"],
+				"EUR": ["0.314 (3.18)", "0.314 (3.18)"],
+				"EUR1": ["0.314 (3.18)", "0.314 (3.18)"]
 			};
 		}
 	}
@@ -184,122 +212,33 @@ document.addEventListener('DOMContentLoaded', async () => {
 			const buyingElement = document.querySelector(`.buying-${currency}`);
 			const sellingElement = document.querySelector(`.selling-${currency}`);
 			if (buyingElement) {
-				if(i<2){
-					buyingElement.textContent = data[currency][0].split(" ")[1].replace(/[()]/g, "");
-					
-				}else{
-					buyingElement.textContent = data[currency][0];
+				try {
+					if(i<2 && data[currency][0].includes(" ")){
+						buyingElement.textContent = data[currency][0].split(" ")[1].replace(/[()]/g, "");
+					} else {
+						buyingElement.textContent = data[currency][0];
+					}
+				} catch (error) {
+					console.warn(`Ошибка при обработке данных покупки для ${currency}:`, error);
+					buyingElement.textContent = data[currency][0] || "3.23";
 				}
 			} else {
 				console.warn(`Элемент покупки не найден для ${currency}`);
 			}
 			if (sellingElement) {
-				if(i<2){
-					sellingElement.textContent = data[currency][1].split(" ")[1].replace(/[()]/g, "");
-				}else{
-					sellingElement.textContent = data[currency][1];
+				try {
+					if(i<2 && data[currency][1].includes(" ")){
+						sellingElement.textContent = data[currency][1].split(" ")[1].replace(/[()]/g, "");
+					} else {
+						sellingElement.textContent = data[currency][1];
+					}
+				} catch (error) {
+					console.warn(`Ошибка при обработке данных продажи для ${currency}:`, error);
+					sellingElement.textContent = data[currency][1] || "3.23";
 				}
-				
 			} else {
 				console.warn(`Элемент продажи не найден для ${currency}`);
 			}
-			++i;
 		}
 	}
-	fillSpan();
-	//==============================================================================================================
-	
-	function rearrangeCountries() {
-		// Получаем все элементы стран
-		const container = document.querySelector(".countries_container");
-		const rows = Array.from(container.querySelectorAll(".contries_row"));
-
-		// Собираем все элементы в один массив
-		let allCountries = [];
-		rows.forEach(row => {
-			allCountries.push(...row.children);
-		});
-
-		// Очищаем контейнер
-		container.innerHTML = "";
-
-		let count = 0; // Счетчик элементов
-		let itemsPerRow;
-		let newRow;
-
-		for (let i = 0; i < allCountries.length; i++) {
-			// Определение количества элементов в строке
-			if (count < 20) {
-				itemsPerRow = 4;  // Первые 5 строк по 4 элемента
-			} else if (count === 20) {
-				itemsPerRow = 5;  // 6-я строка с 5 элементами
-			} else {
-				itemsPerRow = 4;  // Все последующие строки по 4 элемента
-			}
-
-			// Создание новой строки, если достигнуто количество элементов в строке
-			if (count % itemsPerRow === 0 || count === 0) {
-				newRow = document.createElement("div");
-				newRow.classList.add("contries_row");
-				container.appendChild(newRow);
-			}
-
-			newRow.appendChild(allCountries[i]);
-			count++;
-		}
-		const allRows = document.querySelectorAll(".contries_row");
-		const lastRow = allRows[allRows.length - 1];
-		const secondLastRow = allRows[allRows.length - 2];
-		const thirdRow = allRows[allRows.length - 3];
-		while (lastRow.children.length < 4 && secondLastRow && secondLastRow.children.length > 4) {
-			lastRow.prepend(secondLastRow.lastElementChild);
-		}
-		if (lastRow.children.length === 1 && allRows.length > 1) {
-			let prevRow = allRows[allRows.length - 2];
-			while (lastRow.children.length < 4 && prevRow.children.length > 0) {
-				lastRow.prepend(prevRow.lastElementChild);
-			}
-		}
-			moveCountryItem(7, 5);
-	}
-	function moveCountryItem(fromRowIndex, toRowIndex) {
-		// Получаем все строки
-		const rows = document.querySelectorAll('.contries_row');
-
-		// Проверяем, что строки существуют и индексы допустимы
-		if (rows.length > fromRowIndex && rows.length > toRowIndex) {
-			let fromRow = rows[fromRowIndex];  // Исходная строка
-			let toRow = rows[toRowIndex];      // Целевая строка
-
-			// Проверяем, есть ли элементы в исходной строке
-			if (fromRow.children.length > 0) {
-				// Перемещение последнего элемента из одной строки в другую
-				toRow.appendChild(fromRow.lastElementChild);
-			}
-		}
-	}
-	// Запускаем перераспределение при изменении ширины экрана
-	window.addEventListener("resize", function () {
-		if (window.innerWidth <= 950) {
-			rearrangeCountries();
-		}
-	});
-	if (window.innerWidth <= 950) {
-		rearrangeCountries();
-	}
-	document.querySelectorAll('.FAQ_card .card_title').forEach(title => {
-		title.addEventListener('click', function () {
-			const card = this.parentElement;
-			const image =card.querySelector(".toggle_button");
-			if(image.src.split("/")[5]=="button.png"){
-				image.src="./img/button2.png";
-			}else{
-				image.src="./img/button.png";
-			}
-				
-			card.classList.toggle('active');
-		});
-	});
 });
-
-
